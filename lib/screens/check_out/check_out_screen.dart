@@ -33,7 +33,7 @@ class CheckOutScreen extends StatelessWidget {
                   .copyWith(fontFamily: 'Tajawal'),
             ),
             Card(
-              elevation: 5,
+              elevation: 2,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -57,22 +57,18 @@ class CheckOutScreen extends StatelessWidget {
                             },
                             child: Text(
                               AppLocalizations.of(context)!.change,
-                              style: TextStyle(color: Colors.red),
+                              style: TextStyle(color: Colors.red[300]),
                             )),
                       ],
                     ),
                     Text(
                       '12213 شارع العليا، العليا،',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(color: Colors.blueAccent),
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     Text('الرياض - السعوديه',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(color: Colors.blueAccent)),
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary)),
                   ],
                 ),
               ),
@@ -88,6 +84,7 @@ class CheckOutScreen extends StatelessWidget {
             const SizedBox(height: 10),
             RadioListTile(
               title: Text(AppLocalizations.of(context)!.cash_payment),
+              activeColor: Theme.of(context).colorScheme.primary,
               value: "cash",
               groupValue: paymentMethod,
               onChanged: (value) {},

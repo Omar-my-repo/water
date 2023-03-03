@@ -23,110 +23,125 @@ class _HomeScreenState extends State<HomeScreen> {
       onRefresh: () async {
         setState(() {});
       },
-      child: Scaffold(
-        backgroundColor: Colors.white70,
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.home),
-          titleTextStyle: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(fontFamily: 'Tajawal'),
-          iconTheme: IconThemeData(color: Colors.blue),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 120,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.category,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(fontFamily: 'Tajawal'),
-                      ),
-                      Expanded(
-                        child: ListView.separated(
-                          itemCount: 4,
-                          scrollDirection: Axis.horizontal,
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(width: 10),
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              child: HomeCategoryItem(),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
+      child: SafeArea(
+        child: Scaffold(
+            body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.grey[100],
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                //margin: ,
+                child: Row(
+                  textDirection: TextDirection.rtl,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.products,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(fontFamily: 'Tajawal'),
+                      'متجر مياه',
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary),
                     ),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isGridview = !isGridview;
-                          });
-                        },
-                        icon: isGridview
-                            ? const Icon(Icons.menu)
-                            : const Icon(Icons.dashboard))
+                    SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: Image.asset('assets/images/logo.png')),
                   ],
                 ),
-                Visibility(
-                  visible: isGridview,
-                  replacement: SizedBox(
-                    width: double.infinity,
-                    child: testWidget(),
-                  ),
-                  child: GridView.builder(
-                    itemCount: 7,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      childAspectRatio: .70,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 30),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 140,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.category,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6!
+                                .copyWith(
+                                    fontFamily: 'Tajawal',
+                                    color: Colors.black54),
+                          ),
+                          Expanded(
+                            child: ListView.separated(
+                              itemCount: 8,
+                              scrollDirection: Axis.horizontal,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(width: 10),
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  child: HomeCategoryItem(),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.of(context, rootNavigator: true)
-                              .pushNamed(ProductDetails.routeName);
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.products,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(
+                                  fontFamily: 'Tajawal', color: Colors.black54),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isGridview = !isGridview;
+                              });
+                            },
+                            icon: isGridview
+                                ? const Icon(Icons.menu)
+                                : const Icon(Icons.dashboard))
+                      ],
+                    ),
+                    Visibility(
+                      visible: isGridview,
+                      replacement: SizedBox(
+                        width: double.infinity,
+                        child: testWidget(),
+                      ),
+                      child: GridView.builder(
+                        itemCount: 7,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          childAspectRatio: .70,
+                        ),
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context, rootNavigator: true)
+                                  .pushNamed(ProductDetails.routeName);
+                            },
+                            child: HomeProductItem(),
+                          );
                         },
-                        child: HomeProductItem(),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 20),
-              ],
-            ),
+              )
+            ],
           ),
-        ),
+        )),
       ),
     );
   }
@@ -134,14 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget testWidget() {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: MediaQuery.of(context).size.height * .45,
+        height: MediaQuery.of(context).size.height * .42,
         viewportFraction: .7,
         //نسبة الصوره م عرض الشاشه1 يعني العرض كله
         // initialPage: 0,
         enableInfiniteScroll: true,
         // reverse: false,
         autoPlay: true,
-        autoPlayInterval: Duration(seconds: 4),
+        autoPlayInterval: Duration(seconds: 3),
         autoPlayAnimationDuration: Duration(milliseconds: 2000),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
@@ -151,8 +166,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       itemCount: 5,
       itemBuilder: (context, index, realIndex) {
-        return Container(
-          color: Colors.grey[300],
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: HomeProductItem(),
         );
       },
     );

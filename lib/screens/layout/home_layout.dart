@@ -29,7 +29,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         // Default is Colors.white.
         handleAndroidBackButtonPress: true,
         // Default is true.
@@ -76,26 +76,26 @@ class _HomeLayoutState extends State<HomeLayout> {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.home),
         title: (AppLocalizations.of(context)!.home),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: Theme.of(context).colorScheme.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.add_shopping_cart_outlined),
         title: (AppLocalizations.of(context)!.cart),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: Theme.of(context).colorScheme.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.shopping_bag),
         title: (AppLocalizations.of(context)!.orders),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: Theme.of(context).colorScheme.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.profile_circled),
         title: (AppLocalizations.of(context)!.profile),
-        activeColorPrimary: CupertinoColors.activeBlue,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        activeColorPrimary: Theme.of(context).colorScheme.primary,
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }

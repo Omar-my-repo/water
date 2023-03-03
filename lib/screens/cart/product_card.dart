@@ -37,10 +37,10 @@ class ProductCard extends StatelessWidget {
                           const SizedBox(width: 135),
                           Expanded(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(height: 4),
+                                const SizedBox(height: 1),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -59,31 +59,67 @@ class ProductCard extends StatelessWidget {
                                                 height: 1.2),
                                       ),
                                     ),
+                                    SizedBox(width: 8),
                                     Container(
                                       padding: const EdgeInsets.all(6),
                                       margin: const EdgeInsets.symmetric(
                                           horizontal: 6),
                                       decoration: BoxDecoration(
-                                        color: Colors.grey[300],
+                                        color: Colors.grey[200],
                                         shape: BoxShape.circle,
                                       ),
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.clear,
                                         size: 18,
+                                        color: Colors.red[300],
                                       ),
                                     )
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.add)),
-                                    const SizedBox(width: 4),
-                                    const Text('4'),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.remove)),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimary,
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                            // border: Border.symmetric(horizontal: BorderSide(color: Colors.grey,width: 1))
+                                            ),
+                                        child: const Text(
+                                          '4',
+                                          style: TextStyle(
+                                              height: 1.6, fontSize: 18),
+                                          textAlign: TextAlign.center,
+                                        )),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary),
+                                        child: Icon(
+                                          Icons.remove,
+                                          color: Colors.white,
+                                          size: 18,
+                                        ),
+                                      ),
+                                    ),
                                     const Spacer(),
                                     const Text('50'),
                                     Text(AppLocalizations.of(context)!.rial)

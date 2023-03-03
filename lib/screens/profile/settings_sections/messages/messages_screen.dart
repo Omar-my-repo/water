@@ -45,14 +45,15 @@ class _MessagesScreenState extends State<MessagesScreen> {
               )),
               Row(
                 textDirection: TextDirection.rtl,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(12),
                         bottomRight: Radius.circular(12),
                       ),
-                      color: Color(0xff528485),
+                      color: Colors.blueAccent,
                     ),
                     child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -65,6 +66,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   Expanded(
                     child: TextFormField(
                       controller: messageController,
+                      minLines: 1,
+                      maxLines: 3,
                       decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 8),
@@ -75,12 +78,18 @@ class _MessagesScreenState extends State<MessagesScreen> {
                                 topLeft: Radius.circular(12),
                               ),
                               borderSide: BorderSide()),
-                          enabledBorder: const OutlineInputBorder(
+                          focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(12),
                               ),
                               borderSide: BorderSide(
-                                  width: 2, color: Colors.blueAccent))),
+                                  width: 1, color: Colors.blueAccent)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                              ),
+                              borderSide: BorderSide(
+                                  width: 1, color: Colors.blueAccent))),
                     ),
                   ),
                 ],

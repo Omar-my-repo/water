@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:water/providers/main_providers/language_provider.dart';
+import 'package:water/screens/home/home_product_item.dart';
 
 class ProductDetails extends StatefulWidget {
   static const routeName = 'productsDetails';
@@ -34,17 +35,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                         right: languageProvider.language == 'ar' ? 10 : null,
                         left: languageProvider.language == 'en' ? 10 : null,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.black,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.arrow_back,
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.primary,
                               size: 28,
                             ),
                           ),
@@ -52,14 +53,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ],
                 ),
                 DraggableScrollableSheet(
-                    minChildSize: .4,
+                    minChildSize: .5,
                     maxChildSize: .7,
                     initialChildSize: .6,
                     builder: (context, scrollController) {
                       return Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -72,6 +72,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             // mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              SizedBox(height: 6),
                               Divider(
                                 thickness: 3,
                                 indent: 100,
@@ -79,41 +80,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 color: Colors.grey[400],
                               ),
                               const SizedBox(height: 20),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text('زجاجة مياه سعة واحد لتر',
-                                        textAlign: TextAlign.right,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline5!
-                                            .copyWith()),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                            Icons.add_shopping_cart_rounded),
-                                      ),
-                                      Text(
-                                        AppLocalizations.of(context)!.add_cart,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .overline!
-                                            .copyWith(height: .5),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
+                              Text(
+                                  'زجاجة مياه سعة واحد مياه سعة واحد مياه سعة واحد لتر',
+                                  textAlign: TextAlign.right,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline5!
+                                      .copyWith()),
                               const SizedBox(height: 10),
                               Container(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 6, vertical: 4),
                                 child: Text('مياه معدنيه',
@@ -128,10 +104,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                               const SizedBox(height: 14),
 
                               Text(AppLocalizations.of(context)!.description,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(fontWeight: FontWeight.bold)),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium!),
                               const SizedBox(height: 10),
                               Text(
                                 'زجاجة مياه معدنيه مصنوعه من البلاستيك الآمن وبجودة عالية تحفظ المياه صحية سعة واحد لتر ',
@@ -158,37 +132,35 @@ class _ProductDetailsState extends State<ProductDetails> {
                                           .delivery_policy,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .titleMedium!
-                                          .copyWith(
-                                              fontWeight: FontWeight.bold)),
-                                  const Icon(Icons.arrow_forward_ios)
+                                          .titleMedium),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 20,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  )
                                 ],
                               ),
                               const SizedBox(height: 6),
                               const Divider(thickness: 1),
                               const SizedBox(height: 20),
                               Text(AppLocalizations.of(context)!.similar_items,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          fontFamily: 'Tajawal',
-                                          fontWeight: FontWeight.w700)),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium),
                               const SizedBox(height: 14),
                               SizedBox(
                                 width: double.infinity,
-                                height: 120,
+                                height: 220,
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: 5,
+                                  itemCount: 8,
                                   separatorBuilder: (context, index) =>
                                       const SizedBox(width: 10),
                                   itemBuilder: (context, index) {
                                     return Container(
-                                      width: 100,
-                                      height: 120,
-                                      color: Colors.grey[400],
-                                    );
+                                        width: 150,
+                                        padding: EdgeInsets.only(bottom: 20),
+                                        child: HomeProductItem());
                                   },
                                 ),
                               ),
@@ -202,9 +174,11 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             bottomNavigationBar: Container(
               width: double.infinity,
-              height: 60,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 70,
+              color: Colors.grey[200],
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -215,10 +189,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                       Row(
                         children: [
                           Text(
-                            '20',
+                            '200',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline4!
+                                .headline5!
                                 .copyWith(height: 1, color: Colors.black),
                           ),
                           SizedBox(width: 2),
@@ -226,20 +200,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                             AppLocalizations.of(context)!.rial,
                             style: Theme.of(context)
                                 .textTheme
-                                .titleSmall!
+                                .caption!
                                 .copyWith(height: 1),
                           )
                         ],
                       )
                     ],
                   ),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 25),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           minimumSize: const Size.fromHeight(double.infinity),
-                          backgroundColor: Colors.black,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
+                          padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30))),
                       child: Row(
@@ -254,8 +230,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
                           )
                         ],
                       ),

@@ -17,22 +17,28 @@ class _CartScreenState extends State<CartScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(AppLocalizations.of(context)!.cart,
                   style: Theme.of(context).textTheme.headline4),
+              // SizedBox(height: 30),
               Expanded(
-                child: ListView.separated(
+                child: ListView.builder(
                   itemCount: 4,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 20),
                   itemBuilder: (context, index) {
-                    return ProductCard(() {});
+                    return Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        ProductCard(() {}),
+                        const SizedBox(height: 10),
+                      ],
+                    );
                   },
                 ),
               ),
+              // SizedBox(height: 20,),
             ],
           ),
         ),
@@ -45,7 +51,7 @@ class _CartScreenState extends State<CartScreen> {
     return Container(
       height: 120,
       width: double.infinity,
-      color: Colors.grey[100],
+      color: Colors.grey[200],
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child:

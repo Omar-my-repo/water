@@ -23,7 +23,7 @@ class OrdersScreen extends StatelessWidget {
                   separatorBuilder: (context, index) => SizedBox(height: 10),
                   itemBuilder: (context, index) {
                     return Card(
-                      elevation: 5,
+                      elevation: 2,
                       child: ExpansionTile(
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,8 +45,8 @@ class OrdersScreen extends StatelessWidget {
                                     SizedBox(width: 2),
                                     Text(
                                       AppLocalizations.of(context)!.rial,
-                                      style:
-                                          Theme.of(context).textTheme.caption,
+                                      // style:
+                                      //     Theme.of(context).textTheme.caption,
                                     ),
                                   ],
                                 ),
@@ -64,8 +64,8 @@ class OrdersScreen extends StatelessWidget {
                         ),
                         children: [
                           Container(
-                            height: 80,
-                            color: Colors.red,
+                            height: 0,
+                            //color: Colors.grey[300],
                           )
                         ],
                       ),

@@ -33,7 +33,7 @@ class HeaderInfoSection extends StatelessWidget {
                     AppLocalizations.of(context)!.hello,
                     style: Theme.of(context).textTheme.headline5,
                   ),
-                  SizedBox(width: 2),
+                  SizedBox(width: 4),
                   Text(
                     'عمر محمد',
                     style: Theme.of(context)

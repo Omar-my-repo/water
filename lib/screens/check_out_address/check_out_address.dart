@@ -36,12 +36,12 @@ class CheckOutAddress extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                   itemCount: 3,
-                  separatorBuilder: (context, index) => SizedBox(height: 20),
+                  separatorBuilder: (context, index) => SizedBox(height: 14),
                   itemBuilder: (context, index) {
                     //هنا المفروض اشوف اليسته ال راجعه واشوف منها اليدفولت
                     int selectedIndex = 1;
                     return Card(
-                      elevation: 5,
+                      elevation: 2,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
@@ -62,7 +62,7 @@ class CheckOutAddress extends StatelessWidget {
                                     onPressed: () {},
                                     icon: Icon(
                                       Icons.delete,
-                                      color: Colors.red,
+                                      color: Colors.red[300],
                                     ))
                               ],
                             ),
@@ -71,9 +71,14 @@ class CheckOutAddress extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle1!
-                                  .copyWith(color: Colors.blueAccent),
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                             ),
                             RadioListTile(
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary,
                               title: Text(
                                 AppLocalizations.of(context)!
                                     .set_as_default_address,
@@ -99,7 +104,24 @@ class CheckOutAddress extends StatelessWidget {
           ],
         ),
       ),
+
+      // floatingActionButton: SizedBox(
+      //   width: 120,
+      //   height: 45,
+      //   child: MainButton(
+      //     text: 'إضافة عنوان',
+      //     txtSize: 14,
+      //     onTap: (){
+      //
+      //     },
+      //
+      //   ),
+      // ),
       floatingActionButton: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+              Theme.of(context).colorScheme.onPrimary),
+        ),
         onPressed: () {
           showModalBottomSheet(
               context: context,
@@ -135,6 +157,9 @@ class CheckOutAddress extends StatelessWidget {
                       Positioned(
                           top: MediaQuery.of(context).size.height * .4,
                           child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.onPrimary),
                               onPressed: () {},
                               child: Text(AppLocalizations.of(context)!.save)))
                     ],
