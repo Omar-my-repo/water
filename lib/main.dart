@@ -7,7 +7,7 @@ import 'package:water/screens/check_out/check_out_screen.dart';
 import 'package:water/screens/check_out_address/check_out_address.dart';
 import 'package:water/screens/layout/home_layout.dart';
 import 'package:water/screens/login/login_screen.dart';
-import 'package:water/screens/orders/sucess_order.dart';
+import 'package:water/screens/cart/success_order.dart';
 import 'package:water/screens/product_details/product_details.dart';
 import 'package:water/screens/profile/settings_sections/messages/messages_screen.dart';
 import 'package:water/screens/register/register_screen.dart';

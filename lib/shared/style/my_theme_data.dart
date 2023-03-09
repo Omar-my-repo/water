@@ -21,6 +21,7 @@ class MyThemeData {
     /// ```
 
     fontFamily: 'Changa',
+    textTheme: TextTheme(headline3: TextStyle(height: 1)),
     appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       elevation: 0,

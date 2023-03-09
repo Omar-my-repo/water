@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:water/screens/check_out_address/check_out_address.dart';
-import 'package:water/screens/orders/sucess_order.dart';
+import 'package:water/screens/cart/success_order.dart';
 import 'package:water/shared/components/main_button.dart';
 
 class CheckOutScreen extends StatelessWidget {

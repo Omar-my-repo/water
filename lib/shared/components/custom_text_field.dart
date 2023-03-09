@@ -39,6 +39,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChange,
       decoration: InputDecoration(
         label: label == null ? null : Text(label!),
+        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         hintText: hint,
         alignLabelWithHint: true,
         prefixIcon: prefixIcon,
